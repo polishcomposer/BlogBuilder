@@ -9,7 +9,8 @@
         <li class="nav-item"><a href="/about" class="nav-link link-dark px-2">About</a></li>
         <li class="nav-item"><a href="/services" class="nav-link link-dark px-2">Services</a></li>
         <li class="nav-item"><a href="/posts" class="nav-link link-dark px-2">Blog</a></li> 
-    </ul>
+        <li class="nav-item"><a href="/posts/create" class="nav-link link-dark px-2">Create Post</a></li>
+      </ul>
       <ul class="nav">
         <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
