@@ -9,6 +9,7 @@
           <li class="nav-item"><a href="/services" class="nav-link link-dark px-2">Services</a></li>
           <li class="nav-item"><a href="/posts" class="nav-link link-dark px-2">Blog</a></li> 
           <li class="nav-item"><a href="/posts/create" class="nav-link link-dark px-2">Create Post</a></li>
+          <li class="nav-item"><a href="/home" class="nav-link link-dark px-2">Dashboard</a></li>
         </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
