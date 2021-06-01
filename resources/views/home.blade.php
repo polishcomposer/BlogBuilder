@@ -29,7 +29,7 @@
                                 
                                 <td>{{$blog->title}}
                                 <br><small>
-                                  {{$blog->blogposts}}
+                                Posts:  {{$blog->blogposts}}
                                 </small></td>
                                 <td><a href="/blogs/{{$blog->id}}/edit" class="btn btn-primary">Edit</a></td>
                                 <td>

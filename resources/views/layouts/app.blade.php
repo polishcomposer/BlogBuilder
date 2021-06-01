@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
     <script>
     tinymce.init({
@@ -20,10 +21,10 @@
     });
     </script>
 </head>
-<body>
+<body class="body">
+  @include('inc.navbar')
     <div id="app">
-            @include('inc.navbar')
-            <div class="container">
+            <div class="container col-12 col-md-8">
               @include('inc.messages')
               @yield('content')
             </div>

@@ -5,7 +5,7 @@
 <h1>Create Post</h1>
 {!! Form::open(['action' => 'App\Http\Controllers\PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         {{Form::label('blogs', 'Select a blog')}}
-        {{Form::select('blogs', $blogList)}}
+        {{Form::select('blogs', $blogList, null, ['class' => 'form-select'])}}
     <div class="form-group">
         {{Form::label('title', 'Title')}}
         {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
