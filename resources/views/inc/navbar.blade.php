@@ -10,8 +10,6 @@
           <li class="nav-item"><a href="/posts" class="nav-link link-dark px-2">Your Posts</a></li> 
           <li class="nav-item"><a href="/blogs/create" class="nav-link link-dark px-2">Create New Blog</a></li>
           <li class="nav-item"><a href="/posts/create" class="nav-link link-dark px-2">Create New Post</a></li>
-          @else
-          <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
           @endif
         </ul>
             <ul class="navbar-nav ml-auto">

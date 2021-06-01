@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\User;
-
+use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
 use DB;
 class BlogsController extends Controller
@@ -63,7 +63,7 @@ class BlogsController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             $request->file('blog_cover_image')->storeAs('public/blog_cover_images', $fileNameToStore);
         } else {
-            $fileNameToStore = 'noimage.jpeg';
+            $fileNameToStore = 'noimage.jpg';
         }
         $blog = new Blog;
         $blog->title = $request->input('title');
@@ -84,8 +84,15 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::find($id);
-        return view('blogs.show')->with('blog', $blog);
+        $blog = DB::select('SELECT blogs.id, blogs.user_id, blogs.title, blogs.description, blogs.created_at, blogs.blog_cover_image, COUNT(posts.id) AS blogposts FROM blogs LEFT JOIN posts ON blogs.id = posts.blog_id WHERE blogs.id = '.$id.' GROUP BY blogs.id');
+        $posts = Post::where('blog_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $blogs = Blog::find($id);
+        $data = array(
+            'blog' => $blog,
+            'posts' => $posts,
+            'blogs' => $blogs
+        );
+        return view('blogs.show')->with($data);
     }
 
  /**
@@ -116,12 +123,12 @@ class BlogsController extends Controller
         
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'description' => 'required'
         ]);
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'description' => 'required',
+            'blog_cover_image' => 'image|nullable|max:1999'
         ]);
         // Handle File Upload
         $blog = Blog::find($id);
@@ -135,7 +142,7 @@ class BlogsController extends Controller
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
         if($request->hasFile('blog_cover_image')){
-            if($blog->blog_cover_image != 'noimage.jpeg') {
+            if($blog->blog_cover_image != 'noimage.jpg') {
                 Storage::delete('public/blog_cover_images/' . $blog->blog_cover_image);
             }
             $blog->blog_cover_image = $fileNameToStore;

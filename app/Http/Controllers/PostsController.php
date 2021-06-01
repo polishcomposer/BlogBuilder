@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use DB;
 class PostsController extends Controller
 {
@@ -26,7 +27,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        //$posts = DB::select('SELECT * FROM posts ORDER BY title DESC');
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -37,7 +37,21 @@ class PostsController extends Controller
      */
     public function create()
     {
-       return view('posts.create');
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $blogsList = array();
+        if(count($user->blogs) > 0) {
+            foreach($user->blogs as $blog) {
+                $blogsList[$blog->id]=$blog->title;
+            }
+        }
+       
+        $data = array(
+            'blogs' => $user->blogs,
+            'blogList' => $blogsList
+
+        );
+       return view('posts.create')->with($data);
     }
 
     /**
@@ -52,6 +66,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'blogs' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
         // Handle File Upload
@@ -69,6 +84,7 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->blog_id = $request->input('blogs');
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -157,7 +173,7 @@ class PostsController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
         $post->delete();
-            if($post->cover_image != 'noimage.jpg') {
+            if($post->cover_image != 'noimage.jpeg') {
                 Storage::delete('public/cover_images/' . $post->cover_image);
             }
           

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -25,6 +26,11 @@ class HomeController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('home')->with('posts', $user->posts);
+        $blogs = DB::select('SELECT blogs.id, blogs.title, blogs.description, blogs.created_at, COUNT(posts.id) AS blogposts FROM blogs LEFT JOIN posts ON blogs.id = posts.blog_id WHERE blogs.user_id = '.$user_id.' GROUP BY blogs.id ORDER BY blogs.created_at DESC');
+        $data = array(
+            'blogs' => $blogs,
+            'posts' => $user->posts
+        );
+        return view('home')->with($data);
     }
 }

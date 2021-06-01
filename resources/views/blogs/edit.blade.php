@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         {{Form::label('description', 'Description')}}
-        {{Form::text('description', $blog->body, ['class' => 'form-control', 'placeholder' => 'Description'])}}
+        {{Form::text('description', $blog->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
     <div class="form-group">
         {{Form::file('blog_cover_image')}}

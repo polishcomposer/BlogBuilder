@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Blogs</h1>
+<a href="/blogs/create" class="btn btn-primary">Create Blog</a>
 {{$blogs}}
 @if(count($blogs) > 0)
 @foreach($blogs as $blog)
@@ -14,6 +15,8 @@
             <h3><a href="/blogs/{{$blog->id}}" alt="{{$blog->title}}">{{$blog->title}}</a></h3>
             <p>{{$blog->description}}</p>
             <small>Created on {{$blog->created_at}} by {{$blog->user->name}}</small>
+            <p>Link to your blog: <a href="/blogs/{{$blog->id}}" target="_blank">https://www.swoszowski.co.uk/blogbuilder/blogs/{{$blog->id}}</a></p>
+
         </div>
     </div>
 </div>
