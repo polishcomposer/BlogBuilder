@@ -4,12 +4,15 @@
            <!--  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
               <span class="fs-4">Blog Builder</span>
             </a>
-          <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="/about" class="nav-link link-dark px-2">About</a></li>
-          <li class="nav-item"><a href="/services" class="nav-link link-dark px-2">Services</a></li>
-          <li class="nav-item"><a href="/posts" class="nav-link link-dark px-2">Blog</a></li> 
-          <li class="nav-item"><a href="/posts/create" class="nav-link link-dark px-2">Create Post</a></li>
+          @if(!Auth::guest())
           <li class="nav-item"><a href="/home" class="nav-link link-dark px-2">Dashboard</a></li>
+          <li class="nav-item"><a href="/blogs" class="nav-link link-dark px-2">Your Blogs</a></li> 
+          <li class="nav-item"><a href="/posts" class="nav-link link-dark px-2">Your Posts</a></li> 
+          <li class="nav-item"><a href="/blogs/create" class="nav-link link-dark px-2">Create New Blog</a></li>
+          <li class="nav-item"><a href="/posts/create" class="nav-link link-dark px-2">Create New Post</a></li>
+          @else
+          <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+          @endif
         </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
