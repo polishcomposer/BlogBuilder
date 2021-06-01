@@ -14,7 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/wxrx3f4wlcu2lcdabgpocczwkpbnfy9y6nph3oh6ghxh8unk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
     tinymce.init({
       selector: '#body'
@@ -23,12 +23,12 @@
 </head>
 <body class="body">
   @include('inc.navbar')
-    <div id="app">
-            <div class="container col-12 col-md-8">
-              @include('inc.messages')
-              @yield('content')
-            </div>
+  <div id="app">
+    <div class="container col-12 col-md-8">
+      @include('inc.messages')
+      @yield('content')
     </div>
+  </div>
         <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

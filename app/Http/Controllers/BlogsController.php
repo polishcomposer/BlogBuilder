@@ -56,7 +56,7 @@ class BlogsController extends Controller
             'blog_cover_image' => 'image|nullable|max:1999'
         ]);
         // Handle File Upload
-        if($request->hasFile('cover_image')) {
+        if($request->hasFile('blog_cover_image')) {
             $filenameWithExt = $request->file('blog_cover_image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('blog_cover_image')->getClientOriginalExtension();

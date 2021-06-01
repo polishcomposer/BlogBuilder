@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="inline-layout">
 <h1>Blogs</h1>
-<a href="/blogs/create" class="btn btn-primary">Create Blog</a>
-{{$blogs}}
+<a href="/blogs/create" class="btn btn-primary">Create New Blog</a>
+</div>
 @if(count($blogs) > 0)
 @foreach($blogs as $blog)
 <div class="card card-body bg-light">
@@ -16,7 +17,17 @@
             <p>{{$blog->description}}</p>
             <small>Created on {{$blog->created_at}} by {{$blog->user->name}}</small>
             <p>Link to your blog: <a href="/blogs/{{$blog->id}}" target="_blank">https://www.swoszowski.co.uk/blogbuilder/blogs/{{$blog->id}}</a></p>
-
+            @if(!Auth::guest())
+            @if(Auth::user()->id == $blog->user_id)
+            <div class="inline-layout">
+                <a href="/blogs/{{$blog->id}}/edit" class="btn btn-primary">Edit</a>
+                {!! Form::open(['action'=> ['App\Http\Controllers\BlogsController@destroy', $blog->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
+                {!! Form::close() !!}
+                </div>
+            @endif
+        @endif
         </div>
     </div>
 </div>

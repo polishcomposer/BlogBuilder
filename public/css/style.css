@@ -1,13 +1,29 @@
-html {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap');
+html{
     background-image: url("../img/office.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    
+}
+body {
+   font-family: 'Roboto', sans-serif !important; 
 }
 form div {
     margin:5px;
 }
-
+.container-2 {
+    text-align:center;
+    margin: 0 auto;
+    margin-top:100px;
+    color:white;
+}
+.container-2 h1 {
+    margin-bottom:30px;
+}
+.container-2 a {
+    margin:20px;
+}
 .navbar {
     color:white;
     box-shadow: 0px 2px 3px -1px #d6d6d6 !important;
@@ -17,9 +33,28 @@ form div {
     color:white;
     margin-left:10px;
 }
+.inline-layout-wrap {
+    display:flex;
+    align-items:center;
+    font-size:1.2em;
+    font-weight:bold;
+}
+.inline-layout-wrap small {
+    font-weight:normal;
+    font-size:0.8em;
+}
+.inline-layout-wrap img {
+    margin-right:10px;
+    width:15%;
+    display:flex;
+}
 .navbar a:hover {
     color:gray;
     text-decoration:underline;
+}
+.dash-hr {
+    margin:20px 0;
+    border:1px solid black;
 }
 .container {
  margin-top:90px;
@@ -28,13 +63,74 @@ form div {
     border-radius: 5px;
     box-shadow: 3px 3px 3px #848484;
 }
+.container2 {
+    margin-top:20px !important;
+   }
+   .dash-top {
+       margin-bottom:10px;
+   }
 .right-nav {
     margin-left:30px;
     text-align:center;
 }
-a.btn {
+a.btn, .btn-danger, .btn-primary {
     color:white;
 }
-.btn-danger {
-    color:white;
+.inline-layout {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.inline-layout-2 {
+    display:flex;
+    align-items:center;
+}
+.inline-layout-2 a {
+    margin: 0 5px;
+}
+.text-layout {
+    margin-top: 10px;
+}
+.text-layout-post {
+    margin-top: 10px;
+    background-color:white;
+    padding:30px;
+    text-align:justify;
+}
+.card-single-post {
+    margin-bottom:10px;
+}
+.go-back {
+    margin-top:10px;
+}
+.recover-link {
+    color:#8383bf !important;
+}
+.recover-link:hover {
+    color:#050579 !important;
+}
+.dash-buttons {
+    line-height:4em;
+    text-align:right;
+}
+.login-body {
+    margin: 0 auto;
+}
+.inline-layout-login {
+    display:flex;
+    margin:0 auto;
+    text-align:center;
+    justify-content:center;
+}
+.inline-layout-login2 {
+    display:flex;
+    margin-top:20px;
+    justify-content:flex-end;
+    align-items:center;
+    margin-right:10%;
+
+}
+.inline-layout-login input {
+    margin: 0 10px;
+    width:250px;
 }
