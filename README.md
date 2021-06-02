@@ -1,6 +1,6 @@
 # Blog Builder
 <p align="center">
-  <img src="https://www.swoszowski.co.uk/fse/img/fse-min.png">
+  <img src="https://www.swoszowski.co.uk/projects_img/bbapp.png">
 </p>
 
 **Functionality**
